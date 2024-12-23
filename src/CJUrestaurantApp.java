@@ -73,3 +73,8 @@ public class CJUrestaurantApp {
                 private static void viewMenu(Scanner scanner) {
                     System.out.print("조회할 요일 입력 (월, 화, 수, 목, 금): ");
                     String day = scanner.nextLine();
+
+                    List<String> menu = dailyMenus.get(day);
+                    if (menu != null) {
+                        System.out.println(day + "요일 메뉴: " + String.join(", ", menu));
+                    }
