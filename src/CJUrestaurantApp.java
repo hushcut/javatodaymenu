@@ -43,6 +43,17 @@ public class CJUrestaurantApp {
 
         frame.setVisible(true);
     }
+    private static void viewMenuGUI() {
+        String day = JOptionPane.showInputDialog(null, "조회할 요일 입력 (월, 화, 수, 목, 금):", "메뉴 조회", JOptionPane.QUESTION_MESSAGE);
+        if (day != null) {
+            List<String> menu = dailyMenus.get(day);
+            if (menu != null) {
+                JOptionPane.showMessageDialog(null, day + "요일 메뉴: " + String.join(", ", menu), "메뉴 조회 결과", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, day + "요일의 메뉴가 존재하지 않습니다.", "메뉴 조회 결과", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
         private static void loadMenuFromFile(){
             try {BufferedReader reader = new BufferedReader(new FileReader(MENU_FILE)){
                 String line;
