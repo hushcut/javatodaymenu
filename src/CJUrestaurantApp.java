@@ -40,4 +40,6 @@ public class CJUrestaurantApp {
             }
 
         }
+
+        scanner.close();
 }
