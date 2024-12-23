@@ -23,5 +23,11 @@ public class CJUrestaurantApp {
             int choice = scanner.nextInt();
             scanner.nextLine();
 
+            switch (choice){
+                case 1:
+                    viewMenu(scanner);
+                    break;
+            }
+
         }
 }
