@@ -47,10 +47,17 @@ public class CJUrestaurantApp {
             try {BufferedReader reader = new BufferedReader(new FileReader(MENU_FILE)){
                 String line;
                 while ((line = reader.readLine()) ! = null){
+                    String[] parts = line.split(",",2);
+                    String day = parts[0];
+                    String[] items = parts[1].split(",");
+                    dailyMenus.put(day,new ArrayList<>(Array.asList(items)));
 
                 }
+            }   catch (IOException e){
+                System.out.println("메뉴 파일을 불러오는 데 실패했습니다:" + e.getMessage());
             }
 
             }
+
     }
 }
