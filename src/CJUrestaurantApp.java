@@ -54,6 +54,17 @@ public class CJUrestaurantApp {
             }
         }
     }
+    private static void addMenuGUI() {
+        String day = JOptionPane.showInputDialog(null, "추가할 요일 입력 (월, 화, 수, 목, 금):", "메뉴 추가", JOptionPane.QUESTION_MESSAGE);
+        if (day != null) {
+            String items = JOptionPane.showInputDialog(null, "추가할 메뉴 입력 (쉼표로 구분):", "메뉴 추가", JOptionPane.QUESTION_MESSAGE);
+            if (items != null) {
+                String[] newItems = items.split(",");
+                dailyMenus.computeIfAbsent(day, k -> new ArrayList<>()).addAll(Arrays.asList(newItems));
+                JOptionPane.showMessageDialog(null, day + "요일 메뉴가 업데이트되었습니다.", "메뉴 추가 결과", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }
         private static void loadMenuFromFile(){
             try {BufferedReader reader = new BufferedReader(new FileReader(MENU_FILE)){
                 String line;
@@ -81,26 +92,15 @@ public class CJUrestaurantApp {
 
     }
 }
-                private static void viewMenu(Scanner scanner) {
-                    System.out.print("조회할 요일 입력 (월, 화, 수, 목, 금): ");
-                    String day = scanner.nextLine();
-
-                    List<String> menu = dailyMenus.get(day);
-                    if (menu != null) {
-                        System.out.println(day + "요일 메뉴: " + String.join(", ", menu));
-                    }else {
-                        System.out.println(day + "요일의 메뉴가 존재하지 않습니다.");
+                // 메뉴를 파일에 저장하는 메서드
+                private static void saveMenuToFile() {
+                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(MENU_FILE))) {
+                        for (Map.Entry<String, List<String>> entry : dailyMenus.entrySet()) {
+                            writer.write(entry.getKey() + "," + String.join(",", entry.getValue()));
+                            writer.newLine();
+                        }
+                    } catch (IOException e) {
+                        System.out.println("메뉴 파일 저장에 실패했습니다: " + e.getMessage());
                     }
-                }
-
-                private static void addMenu(Scanner scanner) {
-                    System.out.print("추가할 요일 입력 (월, 화, 수, 목, 금): ");
-                    String day = scanner.nextLine();
-
-                    System.out.print("추가할 메뉴 입력 (쉼표로 구분): ");
-                    String[] newItems = scanner.nextLine().split(",");
-
-                    dailyMenus.computeIfAbsent(day, k -> new ArrayList<>()).addAll(Arrays.asList(newItems));
-                    System.out.println(day + "요일 메뉴가 업데이트되었습니다.");
                 }
             }
