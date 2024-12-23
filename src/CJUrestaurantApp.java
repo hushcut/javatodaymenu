@@ -88,3 +88,8 @@ public class CJUrestaurantApp {
 
                     System.out.print("추가할 메뉴 입력 (쉼표로 구분): ");
                     String[] newItems = scanner.nextLine().split(",");
+
+                    dailyMenus.computeIfAbsent(day, k -> new ArrayList<>()).addAll(Arrays.asList(newItems));
+                    System.out.println(day + "요일 메뉴가 업데이트되었습니다.");
+                }
+            }
