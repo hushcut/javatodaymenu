@@ -77,4 +77,7 @@ public class CJUrestaurantApp {
                     List<String> menu = dailyMenus.get(day);
                     if (menu != null) {
                         System.out.println(day + "요일 메뉴: " + String.join(", ", menu));
+                    }else {
+                        System.out.println(day + "요일의 메뉴가 존재하지 않습니다.");
                     }
+                }
