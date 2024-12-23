@@ -15,38 +15,34 @@ public class CJUrestaurantApp {
 
 
         SwingUtilities.invokeLater(CJURestaurantApp::createAndShowGUI);
+    }
 
-        while (running) {
+    private static void createAndShowGUI() {
+        JFrame frame = new JFrame("CJU 식당 메뉴 조회 앱");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
 
-            System.out.println("\n=== CJU 식당 메뉴 조회 앱 ===");
-            System.out.println("1. 메뉴 조회");
-            System.out.println("2. 메뉴 추가");
-            System.out.println("3. 종료");
-            System.out.print("선택: ");
+        JPanel panel = new JPanel(new GridLayout(3, 1));
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+        JButton viewButton = new JButton("메뉴 조회");
+        JButton addButton = new JButton("메뉴 추가");
+        JButton exitButton = new JButton("종료");
 
-            switch (choice){
-                case 1:
-                    viewMenu(scanner);
-                    break;
-                case 2:
-                    addMenu(scanner);
-                    break;
-                case 3:
-                    saveMenuToFile();
-                    running = false;
-                    break;
-                default:
-                    System.out.println("잘못된 선택입니다. 다시 시도하세요.");
+        panel.add(viewButton);
+        panel.add(addButton);
+        panel.add(exitButton);
 
-            }
+        frame.add(panel);
 
-        }
+        viewButton.addActionListener(e -> viewMenuGUI());
+        addButton.addActionListener(e -> addMenuGUI());
+        exitButton.addActionListener(e -> {
+            saveMenuToFile();
+            frame.dispose();
+        });
 
-        scanner.close();
-}
+        frame.setVisible(true);
+    }
         private static void loadMenuFromFile(){
             try {BufferedReader reader = new BufferedReader(new FileReader(MENU_FILE)){
                 String line;
