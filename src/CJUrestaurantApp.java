@@ -20,5 +20,8 @@ public class CJUrestaurantApp {
             System.out.println("3. 종료");
             System.out.print("선택: ");
 
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
         }
 }
