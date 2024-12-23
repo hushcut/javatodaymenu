@@ -81,3 +81,7 @@ public class CJUrestaurantApp {
                         System.out.println(day + "요일의 메뉴가 존재하지 않습니다.");
                     }
                 }
+
+                private static void addMenu(Scanner scanner) {
+                    System.out.print("추가할 요일 입력 (월, 화, 수, 목, 금): ");
+                    String day = scanner.nextLine();
