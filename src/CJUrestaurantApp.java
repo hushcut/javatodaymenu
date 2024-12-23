@@ -29,6 +29,11 @@ public class CJUrestaurantApp {
                     break;
                 case 2:
                     addMenu(scanner);
+                    break;
+                case 3:
+                    saveMenuToFile();
+                    running = false;
+                    break;
 
             }
 
