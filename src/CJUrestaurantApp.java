@@ -27,6 +27,9 @@ public class CJUrestaurantApp {
                 case 1:
                     viewMenu(scanner);
                     break;
+                case 2:
+                    addMenu(scanner);
+
             }
 
         }
