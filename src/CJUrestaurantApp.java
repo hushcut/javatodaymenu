@@ -92,15 +92,3 @@ public class CJUrestaurantApp {
 
     }
 }
-                // 메뉴를 파일에 저장하는 메서드
-                private static void saveMenuToFile() {
-                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(MENU_FILE))) {
-                        for (Map.Entry<String, List<String>> entry : dailyMenus.entrySet()) {
-                            writer.write(entry.getKey() + "," + String.join(",", entry.getValue()));
-                            writer.newLine();
-                        }
-                    } catch (IOException e) {
-                        System.out.println("메뉴 파일 저장에 실패했습니다: " + e.getMessage());
-                    }
-                }
-            }
