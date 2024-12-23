@@ -85,3 +85,6 @@ public class CJUrestaurantApp {
                 private static void addMenu(Scanner scanner) {
                     System.out.print("추가할 요일 입력 (월, 화, 수, 목, 금): ");
                     String day = scanner.nextLine();
+
+                    System.out.print("추가할 메뉴 입력 (쉼표로 구분): ");
+                    String[] newItems = scanner.nextLine().split(",");
