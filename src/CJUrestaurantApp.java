@@ -12,5 +12,13 @@ public class CJUrestaurantApp {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
+        while (running) {
 
+            System.out.println("\n=== CJU 식당 메뉴 조회 앱 ===");
+            System.out.println("1. 메뉴 조회");
+            System.out.println("2. 메뉴 추가");
+            System.out.println("3. 종료");
+            System.out.print("선택: ");
+
+        }
 }
