@@ -13,8 +13,8 @@ public class CJUrestaurantApp {
     public static void main(String[] args) {
         loadMenuFromFile();
 
-        Scanner scanner = new Scanner(System.in);
-        boolean running = true;
+
+        SwingUtilities.invokeLater(CJURestaurantApp::createAndShowGUI);
 
         while (running) {
 
