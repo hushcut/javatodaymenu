@@ -43,3 +43,14 @@ public class CJUrestaurantApp {
 
         scanner.close();
 }
+        private static void loadMenuFromFile(){
+            try {BufferedReader reader = new BufferedReader(new FileReader(MENU_FILE)){
+                String line;
+                while ((line = reader.readLine()) ! = null){
+
+                }
+            }
+
+            }
+    }
+}
